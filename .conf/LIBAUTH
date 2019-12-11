@@ -40,5 +40,5 @@ $JDR/lib*
 
 Vous pouvez remplir le répertoire ~/buildAPKs/var/cache/lib à partir du site https://mvnrepository.com Web. Par exemple, ce lien https://mvnrepository.com/artifact/androidx.appcompat/appcompat contient des bibliothèques appcompat que vous pouvez télécharger dans ~/buildAPKs/var/cache/lib pour compiler l'inclusion.
 
-La commande ` cd ~/buildAPKs/var/cache/lib && curl -OL https://maven.google.com/androidx/appcompat/appcompat/1.1.0/appcompat-1.1.0.aar && ~/buildAPKs/build.github.bash buildapks ` tentera de construire tout ce que https://github.com/BuildAPKs doit proposer notamment appcompat-1.1.0.aar et des artefacts système dans la version une fois que la première ligne de ce fichier est remplacée par true.
+La commande ` cd ~/buildAPKs/var/cache/lib && curl -OL https://maven.google.com/androidx/appcompat/appcompat/1.1.0/appcompat-1.1.0.aar && ~/buildAPKs/build.github.bash buildapks ` tentera de construire tout ce que https://github.com/BuildAPKs vouloir proposer appcompat-1.1.0.aar et des artefacts système dans la version une fois que la première ligne de ce fichier est remplacée par true.
 # LIBAUTH EOF
