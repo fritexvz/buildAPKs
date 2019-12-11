@@ -122,14 +122,14 @@ _CUTE_ () { # checks if USENAME is found in GNAMES and if it is an organization 
 		export ISOTUR=users
 		export USENAME="$(grep -iw "$USENAME" "$RDR/var/db/log/GNAMES" | awk '{print $1}')"
 		export JDR="$RDR/sources/github/$ISOTUR/$USER"
-		export JID="git.$ISOTUR.$USER"
+		export JID="github.$ISOTUR.$USER"
 	elif [[ $(grep -iw "$USENAME" "$RDR/var/db/log/GNAMES" | awk '{print $2}') == Organization ]] && [[ -f "$RDR/sources/github/orgs/$USER/profile" ]] && [[ -f "$RDR/sources/github/orgs/$USER/repos" ]]
 	then 
 		export ISUSER=users
 		export ISOTUR=orgs
 		export USENAME="$(grep -iw "$USENAME" "$RDR/var/db/log/GNAMES" | awk '{print $1}')"
 		export JDR="$RDR/sources/github/$ISOTUR/$USER"
-		export JID="git.$ISOTUR.$USER"
+		export JID="github.$ISOTUR.$USER"
 	else	# get login and type of login from GitHub
 		if [[ "$OAUT" != "" ]] # see .conf/GAUTH file for information 
 		then
