@@ -1,7 +1,7 @@
 false
-=======
-English
-=======
+===========
+= English =
+===========
 Change the first line of this file to true to use artifacts and libraries during compilation; When the first line of this file is changed to true, BuildAPKs loads the files in the following folders into the build process from directories located in:
 
 $RDR/var/cache/lib 
