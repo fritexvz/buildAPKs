@@ -88,7 +88,7 @@ printf "\\e[0m\\n\\e[1;38;5;116mBeginning build in %s\\n\\e[0m" "$PWD"
 [ ! -d "./gen" ] && mkdir -p ./gen
 [ ! -d "./obj" ] && mkdir -p ./obj
 [ ! -d "./res" ] && mkdir -p ./res
-LIBAU="$(cat "$RDR/.conf/LIBAUTH" | awk 'NR==1')" # load login:token key from .conf/GAUTH file, see the GAUTH file for more information to enable OAUTH authentication
+LIBAU="$(cat "$RDR/.conf/LIBAUTH" | awk 'NR==1')" # (this feature is under construction) load true/false from $RDR/.conf/LIBAUTH file, see the LIBAUTH file for more information to enable loading of artifacts and libraries into the build process. 
 BOOTCLASSPATH=""
 SYSJCLASSPATH=""
 [ -d "$RDR"/var/cache/lib ] && DIRLIST="$(find -L "$RDR"/var/cache/lib -type f -name "*.aar" -or -type f -name "*.jar" -or -type f -name "*.apk" 2>/dev/null)" ||:  
