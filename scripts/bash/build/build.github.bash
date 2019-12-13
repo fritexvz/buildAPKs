@@ -1,4 +1,4 @@
-#!/bin/env bash
+#!/usr/bin/env bash
 # Copyright 2019 (c) all rights reserved by BuildAPKs see LICENSE
 # buildapks.github.io/buildAPKs published courtesy pages.github.com
 #####################################################################
