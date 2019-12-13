@@ -95,10 +95,10 @@ then # load artifacts and libraries into the build process.
 	BOOTCLASSPATH=""
 	SYSJCLASSPATH=""
 	[ -d "$RDR"/var/cache/lib ] && DIRLIST="$(find -L "$RDR"/var/cache/lib -type f -name "*.aar" -or -type f -name "*.jar" -or -type f -name "*.apk" 2>/dev/null)" ||:  
-	[ -d "$JDR"/../../../lib* ] && DIRLIST="$DIRLIST $(find -L "$JDR"/../lib* -type f -name "*.aar" -or -type f -name "*.jar" -or -type f -name "*.apk" 2>/dev/null)" ||:  
-	[ -d "$JDR"/../../lib* ] && DIRLIST="$DIRLIST $(find -L "$JDR"/../lib* -type f -name "*.aar" -or -type f -name "*.jar" -or -type f -name "*.apk" 2>/dev/null)" ||:  
-	[ -d "$JDR"/../lib* ] && DIRLIST="$DIRLIST $(find -L "$JDR"/../lib* -type f -name "*.aar" -or -type f -name "*.jar" -or -type f -name "*.apk" 2>/dev/null)" ||:  
-	[ -d "$JDR"/lib* ] && DIRLIST="$DIRLIST $(find -L "$JDR"/lib* -type f -name "*.aar" -or -type f -name "*.jar" -or -type f -name "*.apk" 2>/dev/null)" ||:  
+	[ -d "$JDR"/lib ] && DIRLIST="$DIRLIST $(find -L "$JDR"/lib -type f -name "*.aar" -or -type f -name "*.jar" -or -type f -name "*.apk" 2>/dev/null)" ||:  
+	[ -d "$JDR"/libraries ] && DIRLIST="$DIRLIST $(find -L "$JDR"/libraries -type f -name "*.aar" -or -type f -name "*.jar" -or -type f -name "*.apk" 2>/dev/null)" ||:  
+	[ -d "$JDR"/library ] && DIRLIST="$DIRLIST $(find -L "$JDR"/library -type f -name "*.aar" -or -type f -name "*.jar" -or -type f -name "*.apk" 2>/dev/null)" ||:  
+	[ -d "$JDR"/libs ] && DIRLIST="$DIRLIST $(find -L "$JDR"/libs -type f -name "*.aar" -or -type f -name "*.jar" -or -type f -name "*.apk" 2>/dev/null)" ||:  
 	[ -d /system ] && DIRLIST="$DIRLIST $(find -L /system -type f -name "*.aar" -or -type f -name "*.jar" -or -type f -name "*.apk" 2>/dev/null)" ||: 
 	for LIB in $DIRLIST
 	do
