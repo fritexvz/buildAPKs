@@ -78,31 +78,17 @@ _CLEANUP_ () {
 
 [ -z "${RDR:-}" ] && RDR="$HOME/buildAPKs"
 [ "$PWD" = "$HOME" ] && exit 224
+printf "\\e[0m\\n\\e[1;38;5;116mBeginning build in %s\\n\\e[0m" "$PWD"
 [ -z "${DAY:-}" ] && DAY="$(date +%Y.%m.%d)"
 [ -z "${2:-}" ] && JDR="$PWD"
 [ -z "${JID:-}" ] && JID="${PWD##*/}" # https://www.tldp.org/LDP/abs/html/parameter-substitution.html 
 [ -z "${NUM:-}" ] && NUM=""
-printf "\\e[0m\\n\\e[1;38;5;116mBeginning build in %s\\n\\e[0m" "$PWD"
-if [[ ! -e "./assets" ]]
-then
-	mkdir -p ./assets
-fi
-if [[ ! -d "./bin" ]]
-then
-	mkdir -p ./bin
-fi
-if [[ ! -d "./gen" ]]
-then
-	mkdir -p ./gen
-fi
-if [[ ! -d "./obj" ]]
-then
-	mkdir -p ./obj
-fi
-if [[ ! -d "./res" ]]
-then
-	mkdir -p ./res
-fi
+[ ! -e "./assets" ] && mkdir -p ./assets
+[ ! -d "./bin" ] && mkdir -p ./bin
+[ ! -d "./gen" ] && mkdir -p ./gen
+[ ! -d "./obj" ] && mkdir -p ./obj
+[ ! -d "./res" ] && mkdir -p ./res
+LIBAU="$(cat "$RDR/.conf/LIBAUTH" | awk 'NR==1')" # load login:token key from .conf/GAUTH file, see the GAUTH file for more information to enable OAUTH authentication
 BOOTCLASSPATH=""
 SYSJCLASSPATH=""
 [ -d "$RDR"/var/cache/lib ] && DIRLIST="$(find -L "$RDR"/var/cache/lib -type f -name "*.aar" -or -type f -name "*.jar" -or -type f -name "*.apk" 2>/dev/null)" ||:  
