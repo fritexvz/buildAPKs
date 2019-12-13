@@ -94,7 +94,16 @@ then # load artifacts and libraries into the build process.
 	printf "\\e[1;34m%s" "Loading artifacts and libraries into the compilation: "
 	BOOTCLASSPATH=""
 	SYSJCLASSPATH=""
-	[ -d "$RDR"/var/cache/lib ] && DIRLIST="$(find -L "$RDR"/var/cache/lib -type f -name "*.aar" -or -type f -name "*.jar" -or -type f -name "*.apk" 2>/dev/null)" ||:  
+ 	if [[ -d "$RDR"/var/cache/lib ]] 
+	then
+		DIRLIST="$(find -L "$RDR"/var/cache/lib -type f -name "*.aar" -or -type f -name "*.jar" -or -type f -name "*.apk" 2>/dev/null)"||: 
+		NUMIA=$(wc -l <<< $DIRLIST)
+ 		if [[ $DIRLIST == "" ]] 
+		then
+			NUMIA=0
+		fi
+		printf "\\e[1;34m%s" "Found $NUMIA artifacts and libraries in dircetory ~/"${RDR##*/}"/var/cache/lib:  "
+	fi
 	[ -d "$JDR"/lib ] && DIRLIST="$DIRLIST $(find -L "$JDR"/lib -type f -name "*.aar" -or -type f -name "*.jar" -or -type f -name "*.apk" 2>/dev/null)" ||:  
 	[ -d "$JDR"/libraries ] && DIRLIST="$DIRLIST $(find -L "$JDR"/libraries -type f -name "*.aar" -or -type f -name "*.jar" -or -type f -name "*.apk" 2>/dev/null)" ||:  
 	[ -d "$JDR"/library ] && DIRLIST="$DIRLIST $(find -L "$JDR"/library -type f -name "*.aar" -or -type f -name "*.jar" -or -type f -name "*.apk" 2>/dev/null)" ||:  
