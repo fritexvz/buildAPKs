@@ -141,7 +141,7 @@ aapt package -f \
  	$APTENT \
 	-M AndroidManifest.xml \
 	-J gen \
-	--auto-add-overlay -S "$RDR"/var/cache/lib/res-appcompat -S "$RDR"/var/cache/lib/res-cardview -S "$RDR"/var/cache/lib/res-design -S "$RDR"/var/cache/lib/res-recyclerview \/
+	--auto-add-overlay -S "$RDR"/var/cache/lib/res-appcompat -S "$RDR"/var/cache/lib/res-cardview -S "$RDR"/var/cache/lib/res-design -S "$RDR"/var/cache/lib/res-recyclerview \
 	-S res
 printf "\\e[1;38;5;148m%s;  \\e[1;38;5;114m%s\\n\\e[0m" "aapt: done" "ecj: begun..."
 ecj $ECJENT -d ./obj -sourcepath . $(find . -type f -name "*.java") 
@@ -151,7 +151,7 @@ printf "\\e[1;38;5;148m%s;  \\e[1;38;5;112m%s\\n\\e[0m" "dx: done" "Making $PKGN
 aapt package -f \
  	--min-sdk-version "$MSDKVERSION" --target-sdk-version "$TSDKVERSION" \
 	-M AndroidManifest.xml \
-	--auto-add-overlay -S "$RDR"/var/cache/lib/res-appcompat -S "$RDR"/var/cache/lib/res-cardview -S "$RDR"/var/cache/lib/res-design -S "$RDR"/var/cache/lib/res-recyclerview \/
+	--auto-add-overlay -S "$RDR"/var/cache/lib/res-appcompat -S "$RDR"/var/cache/lib/res-cardview -S "$RDR"/var/cache/lib/res-design -S "$RDR"/var/cache/lib/res-recyclerview \
 	-S res \
 	-A assets \
 	-F bin/"$PKGNAM".apk 
