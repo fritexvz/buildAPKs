@@ -16,7 +16,7 @@ BuildAPKs has [source code](https://github.com/BuildAPKs) and [scripts](https://
 
 ```
 
-[![Screenshot_20191210](https://raw.githubusercontent.com/BuildAPKs/docsBuildAPKs/master/bitpics/screenshots/Screenshot_20191210.jpg)](https://buildapks.github.io/docsBuildAPKs/setup)
+[![Screenshot_20191210.jpg](https://raw.githubusercontent.com/BuildAPKs/docsBuildAPKs/master/bitpics/screenshots/Screenshot_20191210.jpg)](https://buildapks.github.io/docsBuildAPKs/setup)
 
 After installing, you can try building thousands of exciting, amazing and beautiful APKs by running [shell scripts](https://www.google.com/search?q=shell+scripts) from [this directory](https://github.com/BuildAPKs/buildAPKs/tree/master/scripts/bash/build).  It is simple!  The minimal install size to start building your first apps is about 10MB.  Have fun and enjoy compiling, hacking, modifying and running these select APKs!
 
@@ -37,11 +37,13 @@ While this command: ` for i in $(cat ~/buildAPKs/var/db/TNAMES) ; do ~/buildAPKs
 Submit a [pull request](https://github.com/BuildAPKs/db.BuildAPKs/pulls) at db.BuildAPKs to add names to these listings.  The [db.BuildAPKs ](https://github.com/BuildAPKs/db.BuildAPKs/tree/master/)[README.md](https://raw.githubusercontent.com/BuildAPKs/db.BuildAPKs/master/README.md) has more information about the new database buildAPKs uses.  File [BNAMES](https://raw.githubusercontent.com/BuildAPKs/buildAPKs/master/var/db/BNAMES) contains results from accounts that built at least one APK on device with BuildAPKs.  The results are printed as follows: account name, download size, build time, number of AndroidManifest.xml files found, number of APKs built and the names of the APK files that built on device.
 
 ### Really Easily Build an Android APK on an Android Device (Smartphone and Tablet).
-[![Screenshot_20191208](https://raw.githubusercontent.com/BuildAPKs/docsBuildAPKs/master/bitpics/screenshots/Screenshot_20191208.png)](https://buildapks.github.io/docsBuildAPKs/setup)
+[![Screenshot_20191208.png](https://raw.githubusercontent.com/BuildAPKs/docsBuildAPKs/master/bitpics/screenshots/Screenshot_20191208.png)](https://buildapks.github.io/docsBuildAPKs/setup)
 
 Prefix these bash scripts by typing dot slash ` ./ ` on your Android smartphone and tablet in Termux, i.e. type ` ./b ` at the prompt $, press TAB TAB (x2).  The prompt will magically add uild.  Then add a capital  A.  Press TAB TAB (x2) again.  This will build the following command on the command line [`./buildAll.bash`](https://raw.githubusercontent.com/BuildAPKs/buildAPKs/master/scripts/bash/build/buildAll.bash) for you.  Press enter (return) in ` ~/buildAPKs/ `.  Additional CLI information at [The Linux Documentation Project.](https://duckduckgo.com/?q=command+line+beginner+site:tldp.org)
 
 The built APKs will be deposited into Download/builtAPKs if [Termux storage permission](https://github.com/termux/termux-app/blob/master/app/src/main/java/com/termux/app/TermuxActivity.java#L190&&#L198) is granted for installing on smartphone and tablet through browsers, and download and file managers.  Built APKs will be deposited into ~/buildAPKs/cache/builtAPKs if storage permission is not granted.  The minimal install size to start building your first applications is about 10MB.  Have fun and enjoy compiling, hacking, modifying and running these select APKs on device!
+
+[![APKsBuiltInTermux.png](https://raw.githubusercontent.com/BuildAPKs/docsBuildAPKs/master/bitpics/APKsBuiltInTermux.png)](https://buildapks.github.io/docsBuildAPKs/setup)
 
 The [`buildAll.bash`](https://raw.githubusercontent.com/BuildAPKs/buildAPKs/master/scripts/bash/build/buildAll.bash) command can build hundreds of APKs on your device.  Maximum space allotment for complete build of everything included (755) is about 850MB for buildAPKs, plus about 74MB for the finished products deposited into Download/builtAPKs;  More than seven hundred and fifty five (755) Android applications can be made from source code available at [BuildAPKs](https://github.com/BuildAPKs) on device today.  With [build.github.bash](https://github.com/BuildAPKs/buildAPKs/blob/master/scripts/bash/build/build.github.bash) you can build nearly an unlimited number of APKs which are available at GitHub.
 
