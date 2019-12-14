@@ -116,7 +116,7 @@ then # load artifacts and libraries into the build process.
 		SYSJCLASSPATH="-I $LIB $SYSJCLASSPATH"
 	done
 	BOOTCLASSPATH=${BOOTCLASSPATH%%:}
- 	APTENT=" -j $BOOTCLASSPATH $SYSJCLASSPATH " 
+ 	APTENT=" -C $BOOTCLASSPATH $SYSJCLASSPATH " 
  	ECJENT=" -bootclasspath $BOOTCLASSPATH "
 	printf "\\e[1;32m\\bDONE\\e[0m\\n"
 else # do not load artifacts and libraries into the build process.
