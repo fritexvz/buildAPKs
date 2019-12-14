@@ -286,7 +286,7 @@ _MAINGITHUB_ () {
 	_WAKELOCK_
 	_GETREPOS_
 	_PRINTJS_
-	JARR=($(grep -v JavaScript "$JDR/repos" | grep -B 5 'Java' | grep svn_url | awk -v x=2 '{print $x}' | sed 's/\,//g' | sed 's/\"//g')) ||: # creates array of Java language repositories	
+	JARR=($(grep -v JavaScript "$JDR/repos" | grep -B 5 -e Java -e Shell -e Kotlin | grep svn_url | awk -v x=2 '{print $x}' | sed 's/\,//g' | sed 's/\"//g')) ||: # creates array of Java language repositories	
 	_PRINTJD_
 	if [[ "${JARR[@]}" == *ERROR* ]]
 	then
@@ -334,7 +334,7 @@ _PRINTJD_ () {
 }
 
 _PRINTJS_ () {
-	printf "\\n\\e[1;34mSearching for Java language repositories: "'\033]2;Searching for Java language repositories: OK\007'
+	printf "\\n\\e[1;34mSearching for Java, Kotlin and Shell language repositories: "'\033]2;Searching for Java, Kotlin and Shell language repositories: OK\007'
 }
 
 _SIGNAL_ () {
