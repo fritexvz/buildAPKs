@@ -107,7 +107,7 @@ then # load artifacts and libraries into the build process.
 			then	# adjust count to zero
 				NUMIA=0
 			fi
-			printf "\\e[1;34m%s" "Found $NUMIA artifacts and libraries in directory "$LIBDIR":  "
+			printf "\\e[1;34m%s" "Adding $NUMIA artifacts and libraries from directory "$LIBDIR":  "
 		fi
 	done
 	for LIB in $DIRLIST
