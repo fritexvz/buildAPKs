@@ -124,10 +124,10 @@ else # do not load artifacts and libraries into the build process.
  	AAPTENT=""
  	ECJENT=""
 fi
-[ ! -e "./libs/res-appcompat" ] && AAPTENT=" -S libs/res-appcompat $AAPTENT"
-[ ! -e "./libs/res-cardview" ] && AAPTENT=" -S libs/res-cardview $AAPTENT"
-[ ! -e "./libs/res-design" ] && AAPTENT=" -S libs/res-design $AAPTENT"
-[ ! -e "./libs/res-recyclerview" ] && AAPTENT=" -S libs/res-recyclerview $AAPTENT"
+[ -e "./libs/res-appcompat" ] && AAPTENT=" -S libs/res-appcompat $AAPTENT"
+[ -e "./libs/res-cardview" ] && AAPTENT=" -S libs/res-cardview $AAPTENT"
+[ -e "./libs/res-design" ] && AAPTENT=" -S libs/res-design $AAPTENT"
+[ -e "./libs/res-recyclerview" ] && AAPTENT=" -S libs/res-recyclerview $AAPTENT"
 NOW=$(date +%s)
 MSDKVERSIO="$(getprop ro.build.version.min_supported_target_sdk)" || printf "%s" "signal ro.build.version.min_supported_target_sdk ${0##*/} build.one.bash generated; Continuing...  "
 MSDKVERSION="${MSDKVERSIO:-14}"
