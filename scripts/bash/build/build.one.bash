@@ -99,7 +99,7 @@ then # load artifacts and libraries into the build process.
 	do
 	 	if [[ -d "$LIBDIR" ]] # library directory exists
 		then	# search directory for artifacts and libraries
-			DIRLIST="$DIRLIST $(find -L "$LIBDIR" -type f -name "*.aar" -or -type f -name "*.jar" -or -type f -name "*.apk" 2>/dev/null)"||:
+			DIRLIST="$(find -L "$LIBDIR" -type f -name "*.aar" -or -type f -name "*.jar" -or -type f -name "*.apk" 2>/dev/null)"||:
 			NUMIA=$(wc -l <<< $DIRLIST)
 	 		if [[ $DIRLIST == "" ]] # nothing was found 
 			then	# adjust count to zero
