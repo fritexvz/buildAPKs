@@ -95,7 +95,7 @@ then # load artifacts and libraries into the build process.
 	BOOTCLASSPATH=""
 	SYSJCLASSPATH=""
 	DIRLIST=""
-	LIBDIRPATH=("$JDR/../../lib" "$JDR/../../libraries" "$JDR/../../library" "$JDR/../../libs" "$JDR/../lib" "$JDR/../libraries" "$JDR/../library" "$JDR/../libs" "$RDR/var/cache/lib" "$JDR/lib" "$JDR/libraries" "$JDR/library" "$JDR/libs" "/system") # modify array LIBDIRPATH to suit the projects artifact needs.  
+	LIBDIRPATH=("$JDR/../../../lib" "$JDR/../../../libraries" "$JDR/../../../library" "$JDR/../../../libs" "$JDR/../../lib" "$JDR/../../libraries" "$JDR/../../library" "$JDR/../../libs" "$JDR/../lib" "$JDR/../libraries" "$JDR/../library" "$JDR/../libs" "$RDR/var/cache/lib" "$JDR/lib" "$JDR/libraries" "$JDR/library" "$JDR/libs" "/system") # modify array LIBDIRPATH to suit the projects artifact needs.  
 	for LIBDIR in ${LIBDIRPATH[@]} # every element in array LIBDIRPATH 
 	do	# directory path check
 	 	if [[ -d "$LIBDIR" ]] # library directory exists
