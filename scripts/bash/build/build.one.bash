@@ -94,15 +94,15 @@ then # load artifacts and libraries into the build process.
 	printf "\\e[1;34m%s" "Loading artifacts and libraries into the compilation: "
 	BOOTCLASSPATH=""
 	SYSJCLASSPATH=""
-	LIBDIRPATH=("$RDR/var/cache/lib" "$JDR/lib" "$JDR/libraries" "$JDR/library" "$JDR/libs" "/system")
-	for LIBDIR in ${LIBDIRPATH[@]}
+	LIBDIRPATH=("$RDR/var/cache/lib" "$JDR/lib" "$JDR/libraries" "$JDR/library" "$JDR/libs" "/system") # add search paths to this array 
+	for LIBDIR in ${LIBDIRPATH[@]} # library directory path in this array 
 	do
-	 	if [[ -d "$LIBDIR" ]] 
-		then
-			DIRLIST="$(find -L "$LIBDIR" -type f -name "*.aar" -or -type f -name "*.jar" -or -type f -name "*.apk" 2>/dev/null)"||:
+	 	if [[ -d "$LIBDIR" ]] # library directory exists
+		then	# search directory for artifacts and libraries
+			DIRLIST="$DIRLIST $(find -L "$LIBDIR" -type f -name "*.aar" -or -type f -name "*.jar" -or -type f -name "*.apk" 2>/dev/null)"||:
 			NUMIA=$(wc -l <<< $DIRLIST)
-	 		if [[ $DIRLIST == "" ]] 
-			then
+	 		if [[ $DIRLIST == "" ]] # nothing was found 
+			then	# adjust count to zero
 				NUMIA=0
 			fi
 			printf "\\e[1;34m%s" "Found $NUMIA artifacts and libraries in directory "$LIBDIR":  "
