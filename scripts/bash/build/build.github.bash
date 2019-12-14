@@ -313,7 +313,7 @@ _MAINGITHUB_ () {
 _NAND_ () { # write configuration file for repository if AndroidManifest.xml file is NOT found in git repository
 	printf "%s\\n" "$COMMIT" > "$JDR/var/conf/$USER.${NAME##*/}.${COMMIT::7}.ck"
 	printf "%s\\n" "1" >> "$JDR/var/conf/$USER.${NAME##*/}.${COMMIT::7}.ck"
-	printf "\\n%s\\n\\n" "Could not find an AndroidManifest.xml file in Java language repository $USER ${NAME##*/} ${COMMIT::7}:  NOT downloading ${NAME##*/} tarball."
+	printf "\\n%s\\n\\n" "Could not find an AndroidManifest.xml file in Java, Kotlin or Shell language repository $USER ${NAME##*/} ${COMMIT::7}:  NOT downloading ${NAME##*/} tarball."
 }
 
 _PRINTAS_ () {
