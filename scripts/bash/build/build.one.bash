@@ -94,12 +94,13 @@ then # load artifacts and libraries into the build process.
 	printf "\\e[1;34m%s" "Loading artifacts and libraries into the compilation: "
 	BOOTCLASSPATH=""
 	SYSJCLASSPATH=""
+	DIRLIST=""
 	LIBDIRPATH=("$RDR/var/cache/lib" "$JDR/lib" "$JDR/libraries" "$JDR/library" "$JDR/libs" "/system") # add search paths to this array 
 	for LIBDIR in ${LIBDIRPATH[@]} # library directory path in this array 
 	do
 	 	if [[ -d "$LIBDIR" ]] # library directory exists
 		then	# search directory for artifacts and libraries
-			DIRLIST="$(find -L "$LIBDIR" -type f -name "*.aar" -or -type f -name "*.jar" -or -type f -name "*.apk" 2>/dev/null)"||:
+			DIRLIST="$DIRLIST $(find -L "$LIBDIR" -type f -name "*.aar" -or -type f -name "*.jar" -or -type f -name "*.apk" 2>/dev/null)"||:
 			NUMIA=$(wc -l <<< $DIRLIST)
 	 		if [[ $DIRLIST == "" ]] # nothing was found 
 			then	# adjust count to zero
