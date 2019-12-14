@@ -79,7 +79,7 @@ _CLEANUP_ () {
 [ -z "${RDR:-}" ] && RDR="$HOME/buildAPKs"
 [ "$PWD" = "$HOME" ] && exit 224
 printf "\\e[0m\\n\\e[1;38;5;116mBeginning build in %s\\n\\e[0m" "$PWD"
-[ -z "${DAY:-}" ] && DAY="$(date +%Y.%m.%d)"
+[ -z "${DAY:-}" ] && DAY="$(date +%Y%m%d)"
 [ -z "${2:-}" ] && JDR="$PWD"
 [ -z "${JID:-}" ] && JID="${PWD##*/}" # https://www.tldp.org/LDP/abs/html/parameter-substitution.html 
 [ -z "${NUM:-}" ] && NUM=""
