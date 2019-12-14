@@ -91,23 +91,23 @@ printf "\\e[0m\\n\\e[1;38;5;116mBeginning build in %s\\n\\e[0m" "$PWD"
 LIBAU="$(cat "$RDR/.conf/LIBAUTH" | awk 'NR==1')" # load true/false from $RDR/.conf/LIBAUTH file, see the LIBAUTH file for more information to enable loading of artifacts and libraries into the build process. 
 if [[ "$LIBAU" == true ]]
 then # load artifacts and libraries into the build process.
-	printf "\\e[1;34m%s" "Loading artifacts and libraries into the compilation: "
+	printf "\\e[1;34m%s" "Loading artifacts and libraries into the compilation:  "
 	BOOTCLASSPATH=""
 	SYSJCLASSPATH=""
 	DIRLIST=""
-	LIBDIRPATH=("$JDR/../../lib" "$JDR/../../libraries" "$JDR/../../library" "$JDR/../../libs" "$JDR/../lib" "$JDR/../libraries" "$JDR/../library" "$JDR/../libs" "$RDR/var/cache/lib" "$JDR/lib" "$JDR/libraries" "$JDR/library" "$JDR/libs" "/system") # modify array LIBDIRPATH to suit the projects.  
-	for LIBDIR in ${LIBDIRPATH[@]} # library directory path in this array 
-	do
+	LIBDIRPATH=("$JDR/../../lib" "$JDR/../../libraries" "$JDR/../../library" "$JDR/../../libs" "$JDR/../lib" "$JDR/../libraries" "$JDR/../library" "$JDR/../libs" "$RDR/var/cache/lib" "$JDR/lib" "$JDR/libraries" "$JDR/library" "$JDR/libs" "/system") # modify array LIBDIRPATH to suit the projects artifact needs.  
+	for LIBDIR in ${LIBDIRPATH[@]} # every element in array LIBDIRPATH 
+	do	# directory path check
 	 	if [[ -d "$LIBDIR" ]] # library directory exists
 		then	# search directory for artifacts and libraries
 			DIRLIS="$(find -L "$LIBDIR" -type f -name "*.aar" -or -type f -name "*.jar" -or -type f -name "*.apk" 2>/dev/null)"||:
 			DIRLIST="$DIRLIST $DIRLIS"
 			NUMIA=$(wc -l <<< $DIRLIST)
 	 		if [[ $DIRLIS == "" ]] # nothing was found 
-			then	# adjust count to zero
+			then	# adjust ` wc -l ` count to zero
 				NUMIA=0
 			fi
-			printf "\\e[1;34m%s" "Adding $NUMIA artifacts and libraries from directory "$LIBDIR" into build ${PWD##*/}:  "
+			printf "\\e[1;34m%s" "Adding $NUMIA artifacts and libraries from directory "$LIBDIR" into build "${PWD##*/}":  "
 		fi
 	done
 	for LIB in $DIRLIST
@@ -118,7 +118,7 @@ then # load artifacts and libraries into the build process.
 	BOOTCLASSPATH=${BOOTCLASSPATH%%:}
  	APTENT=" -j $BOOTCLASSPATH $SYSJCLASSPATH " 
  	ECJENT=" -bootclasspath $BOOTCLASSPATH "
-	printf "\\e[1;32m%s\\e[0m\\n" "DONE"
+	printf "\\e[1;32m\\bDONE\\e[0m\\n"
 else # do not load artifacts and libraries into the build process.
 	printf "\\e[1;34m%s\\n" "To load artifacts and libraries into the compilation see the ~/"${RDR##*/}"/.conf/LIBAUTH file. "
  	APTENT=""
