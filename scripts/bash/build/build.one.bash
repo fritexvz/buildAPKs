@@ -84,10 +84,10 @@ printf "\\e[0m\\n\\e[1;38;5;116mBeginning build in %s\\n\\e[0m" "$PWD"
 [ -z "${JID:-}" ] && JID="${PWD##*/}" # https://www.tldp.org/LDP/abs/html/parameter-substitution.html 
 [ -z "${NUM:-}" ] && NUM=""
 [ ! -e "./assets" ] && mkdir -p ./assets
-[ ! -d "./bin" ] && mkdir -p ./bin
-[ ! -d "./gen" ] && mkdir -p ./gen
-[ ! -d "./obj" ] && mkdir -p ./obj
-[ ! -d "./res" ] && mkdir -p ./res
+[ ! -e "./bin" ] && mkdir -p ./bin
+[ ! -e "./gen" ] && mkdir -p ./gen
+[ ! -e "./obj" ] && mkdir -p ./obj
+[ ! -e "./res" ] && mkdir -p ./res
 LIBAU="$(cat "$RDR/.conf/LIBAUTH" | awk 'NR==1')" # load true/false from $RDR/.conf/LIBAUTH file, see the LIBAUTH file for more information to enable loading of artifacts and libraries into the build process. 
 if [[ "$LIBAU" == true ]]
 then # load artifacts and libraries into the build process.
