@@ -95,7 +95,7 @@ then # load artifacts and libraries into the build process.
 	BOOTCLASSPATH=""
 	SYSJCLASSPATH=""
 	DIRLIST=""
-	LIBDIRPATH=("$RDR/var/cache/lib" "$JDR/lib" "$JDR/libraries" "$JDR/library" "$JDR/libs" "/system") # add search paths to this array 
+	LIBDIRPATH=("$JDR/../../lib" "$JDR/../../libraries" "$JDR/../../library" "$JDR/../../libs" "$JDR/../lib" "$JDR/../libraries" "$JDR/../library" "$JDR/../libs" "$RDR/var/cache/lib" "$JDR/lib" "$JDR/libraries" "$JDR/library" "$JDR/libs" "/system") # artifact search paths 
 	for LIBDIR in ${LIBDIRPATH[@]} # library directory path in this array 
 	do
 	 	if [[ -d "$LIBDIR" ]] # library directory exists
