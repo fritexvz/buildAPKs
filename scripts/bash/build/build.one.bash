@@ -145,7 +145,6 @@ sed -i "s/targetSdkVersion\=\"[0-9]\"/targetSdkVersion\=\"$TSDKVERSION\"/g" Andr
 sed -i "s/targetSdkVersion\=\"[0-9][0-9]\"/targetSdkVersion\=\"$TSDKVERSION\"/g" AndroidManifest.xml 
 printf "\\e[1;38;5;115m%s\\n\\e[0m" "aapt: started..."
 aapt package -f \
-	--auto-add-overlay -S "$RDR"/var/cache/lib/res-appcompat -S "$RDR"/var/cache/lib/res-cardview -S "$RDR"/var/cache/lib/res-design -S "$RDR"/var/cache/lib/res-recyclerview \
  	--min-sdk-version "$MSDKVERSION" --target-sdk-version "$TSDKVERSION" --version-code "$NOW" --version-name "$PKGNAM" -c "$(getprop persist.sys.locale|awk -F- '{print $1}')" \
 	-M AndroidManifest.xml \
  	$AAPTENT \
