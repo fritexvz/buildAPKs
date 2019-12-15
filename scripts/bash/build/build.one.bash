@@ -113,7 +113,7 @@ then # load artifacts and libraries into the build process.
 	for LIB in $DIRLIST
 	do
 		BOOTCLASSPATH=${LIB}:${BOOTCLASSPATH};
-		SYSJCLASSPATH="-C $LIB $SYSJCLASSPATH"
+		SYSJCLASSPATH="-j $LIB $SYSJCLASSPATH"
 	done
 	BOOTCLASSPATH=${BOOTCLASSPATH%%:}
  	AAPTENT=" $SYSJCLASSPATH " 
@@ -156,7 +156,6 @@ aapt package -f \
 	--auto-add-overlay -S "$RDR"/var/cache/lib/res-appcompat -S "$RDR"/var/cache/lib/res-cardview -S "$RDR"/var/cache/lib/res-design -S "$RDR"/var/cache/lib/res-recyclerview \
  	--min-sdk-version "$MSDKVERSION" --target-sdk-version "$TSDKVERSION" \
 	-M AndroidManifest.xml \
- 	$AAPTENT \
 	-S res \
 	-A assets \
 	-F bin/"$PKGNAM".apk 
