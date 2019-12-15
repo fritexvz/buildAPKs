@@ -94,6 +94,7 @@ then # load artifacts and libraries into the build process.
 	printf "\\e[1;34m%s" "Loading artifacts and libraries into the compilation:  "
 	BOOTCLASSPATH=""
 	SYSJCLASSPATH=""
+	JSJCLASSPATH=""
 	DIRLIST=""
 	LIBDIRPATH=("$JDR/../../../lib" "$JDR/../../../libraries" "$JDR/../../../library" "$JDR/../../../libs" "$JDR/../../lib" "$JDR/../../libraries" "$JDR/../../library" "$JDR/../../libs" "$JDR/../lib" "$JDR/../libraries" "$JDR/../library" "$JDR/../libs" "$JDR/lib" "$JDR/libraries" "$JDR/library" "$JDR/libs" "$RDR/var/cache/lib" "/system") # modify array LIBDIRPATH to suit the projects artifact needs.  
 	for LIBDIR in ${LIBDIRPATH[@]} # every element in array LIBDIRPATH 
@@ -114,6 +115,7 @@ then # load artifacts and libraries into the build process.
 	do
 		BOOTCLASSPATH=${LIB}:${BOOTCLASSPATH};
 		SYSJCLASSPATH="-I $LIB $SYSJCLASSPATH"
+		JSJCLASSPATH="-j $LIB $SYSJCLASSPATH"
 	done
 	BOOTCLASSPATH=${BOOTCLASSPATH%%:}
  	AAPTENT=" $SYSJCLASSPATH " 
@@ -143,8 +145,8 @@ printf "\\e[1;38;5;115m%s\\n\\e[0m" "aapt: started..."
 aapt package -f \
 	--auto-add-overlay -S "$RDR"/var/cache/lib/res-appcompat -S "$RDR"/var/cache/lib/res-cardview -S "$RDR"/var/cache/lib/res-design -S "$RDR"/var/cache/lib/res-recyclerview \
  	--min-sdk-version "$MSDKVERSION" --target-sdk-version "$TSDKVERSION" --version-code "$NOW" --version-name "$PKGNAM" -c "$(getprop persist.sys.locale|awk -F- '{print $1}')" \
- 	$AAPTENT \
 	-M AndroidManifest.xml \
+ 	$AAPTENT \
 	-J gen \
 	-S res
 printf "\\e[1;38;5;148m%s;  \\e[1;38;5;114m%s\\n\\e[0m" "aapt: done" "ecj: begun..."
@@ -156,6 +158,7 @@ aapt package -f \
 	--auto-add-overlay -S "$RDR"/var/cache/lib/res-appcompat -S "$RDR"/var/cache/lib/res-cardview -S "$RDR"/var/cache/lib/res-design -S "$RDR"/var/cache/lib/res-recyclerview \
  	--min-sdk-version "$MSDKVERSION" --target-sdk-version "$TSDKVERSION" \
 	-M AndroidManifest.xml \
+ 	$JSJCLASSPATH \
 	-S res \
 	-A assets \
 	-F bin/"$PKGNAM".apk 
