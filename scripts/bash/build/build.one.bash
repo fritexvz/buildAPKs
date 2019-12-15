@@ -119,8 +119,12 @@ then # load artifacts and libraries into the build process.
 	done
 	BOOTCLASSPATH=${BOOTCLASSPATH%%:}
  	AAPTENT=" $SYSJCLASSPATH " 
- 	ECJENT=" -classpath $BOOTCLASSPATH "
+	[ -e "./libs/res-appcompat" ] && AAPTENT=" -S libs/res-appcompat $AAPTENT"
+	[ -e "./libs/res-cardview" ] && AAPTENT=" -S libs/res-cardview $AAPTENT"
+	[ -e "./libs/res-design" ] && AAPTENT=" -S libs/res-design $AAPTENT"
+	[ -e "./libs/res-recyclerview" ] && AAPTENT=" -S libs/res-recyclerview $AAPTENT"
  	AAPTENT=" --auto-add-overlay $SYSJCLASSPATH " 
+ 	ECJENT=" -classpath $BOOTCLASSPATH "
 	printf "\\e[1;32m\\bDONE\\e[0m\\n"
 else # do not load artifacts and libraries into the build process.
 	printf "\\e[1;34m%s\\n" "To load artifacts and libraries into the compilation see the ~/"${RDR##*/}"/.conf/LIBAUTH file. "
