@@ -125,6 +125,7 @@ then # load artifacts and libraries into the build process.
 	[ -e "./libs/res-design" ] && AAPTENT=" -S libs/res-design $AAPTENT"
 	[ -e "./libs/res-recyclerview" ] && AAPTENT=" -S libs/res-recyclerview $AAPTENT"
 	printf "\\e[1;32m\\bDONE\\e[0m\\n"
+ 	AAPTENT=" --auto-add-overlay $SYSJCLASSPATH " 
 else # do not load artifacts and libraries into the build process.
 	printf "\\e[1;34m%s\\n" "To load artifacts and libraries into the compilation see the ~/"${RDR##*/}"/.conf/LIBAUTH file. "
  	AAPTENT=""
@@ -156,7 +157,6 @@ printf "\\e[1;38;5;149m%s;  \\e[1;38;5;113m%s\\n\\e[0m" "ecj: done" "dx: started
 dx --dex --output=bin/classes.dex obj
 printf "\\e[1;38;5;148m%s;  \\e[1;38;5;112m%s\\n\\e[0m" "dx: done" "Making $PKGNAM.apk..."
 aapt package -f \
-	--auto-add-overlay -S "$RDR"/var/cache/lib/res-appcompat -S "$RDR"/var/cache/lib/res-cardview -S "$RDR"/var/cache/lib/res-design -S "$RDR"/var/cache/lib/res-recyclerview \
  	--min-sdk-version "$MSDKVERSION" --target-sdk-version "$TSDKVERSION" \
 	-M AndroidManifest.xml \
  	$JSJCLASSPATH \
